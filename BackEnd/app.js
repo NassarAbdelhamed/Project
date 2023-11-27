@@ -59,7 +59,7 @@ app.post('/login', async (req, res) => {
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/lab2db')
+mongoose.connect('')  //mongodb://127.0.0.1:27017/connection_name
   .then(() => {
     console.log('connected to mongoDB')
     app.listen(8000, () => console.log('app started on port 8000'))
