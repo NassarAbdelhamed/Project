@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/login.css";
+import Nav from "./Nav"
 import { useNavigate } from "react-router-dom";
 
 const baseURL = "http://localhost:8000";
@@ -22,14 +23,18 @@ const Login = () => {
     try {
       await axios.post(`${baseURL}/login`, formData);
       console.log('Login successful');
-      navigate("/Page1");
+      navigate("/Products");
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage('Invalid email or password. Please try again.');
     }
   };
-
+  const navLinks = [
+    { text: 'Signup', url: 'signup' },
+  ];
   return (
+    <>
+    <Nav links={navLinks} ></Nav> 
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
@@ -62,6 +67,7 @@ const Login = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "../styles/signup.css";
+import Nav from "./Nav"
 
 const baseURL = "http://localhost:8000";
 
@@ -27,7 +28,7 @@ const Signup = () => {
         password: formData.password,
       });
       console.log('User added successfully');
-      navigate("/Page1");
+      navigate("/Products");
     } catch (error) {
       console.error('Error:', error);
       // Handle the error and inform the user about the failure.
@@ -35,7 +36,13 @@ const Signup = () => {
     }
   };
 
+  const navLinks = [
+    { text: 'Login', url: '/login' },
+  ];
+
   return (
+    <>
+     <Nav links={navLinks} ></Nav> 
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2>Signup</h2>
@@ -78,6 +85,7 @@ const Signup = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
